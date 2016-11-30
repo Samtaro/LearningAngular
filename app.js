@@ -4,6 +4,26 @@
   app.controller('StoreController', function(){
     this.products = gems;
   });
+  app.controller('TabController', function(){
+    this.tab=1;
+    this.setTab = function(setTab){
+      this.tab = setTab;
+    };
+    this.isSet = function(checkTab){
+      return this.tab === checkTab;
+    };
+  });
+  app.controller('GalleryController', function(){
+    this.current = 0;
+    this.setCurrent = function(setCurrent){
+      if(setCurrent){
+         this.current = setCurrent;
+         }
+      else{
+        this.current = 0;
+        }
+    };
+  });
   var gems = [{
       canPurchase: true,
       name: 'Azurite',
