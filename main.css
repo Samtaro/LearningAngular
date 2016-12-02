@@ -1,3 +1,11 @@
+html{
+  text-align: center;
+}
+body{
+  width: 50%;
+  margin: 0 auto;
+}
+
 .ng-invalid.ng-dirty{
   border-color: #FA787E;
 }

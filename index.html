@@ -7,13 +7,18 @@
     <script type="text/javascript" src="app.js"></script>
   </head>
   <body ng-controller="StoreController as store">
-    <div ng-repeat="product in store.products">
+    <header>
+    <h1 class="text-center">Flatlander Crafted Gems</h1>
+    <h2 class="text-center">– an Angular store –</h2>
+  </header>
+    <div class="list-group">
+    <div class="list-group-item" ng-repeat="product in store.products">
     <div ng-hide="product.soldOut"  class="product row">
       <h3>
         {{product.name}}
         <em class="pull-right">{{product.price | currency}}</em>
       </h3>
-      <section class="gallery" ng-controller="GalleryController as gallery" ng-show="product.images.length">
+      <div ng-controller="GalleryController as gallery" ng-show="product.images.length">
         <div class="img-wrap">
           <img ng-src="{{product.images[gallery.current]}}" />
         </div>
@@ -22,7 +27,7 @@
             <img ng-src="{{image}}"/>
           </li>
         </ul>
-      </section>
+      </div>
       <section class="tab" ng-controller="TabController as tab">
         <ul class="nav nav-pills">
           <li ng-class="{active:tab.isSet(1)}">
@@ -32,13 +37,10 @@
           <li ng-class="{active:Tab.isSet(3)}">
             <a href ng-click="tab.setTab(3)">Reviews</a></li>
         </ul>
-        <div ng-show="tab.isSet(1)">
-          <h4>Description</h4>
-          <blockquote>{{product.description}}</blockquote>
-        </div>
-        <div ng-show="tab.isSet(2)">
-          <h4>Specs</h4>
-          <blockquote>Shine: {{product.shine}} </blockquote>
+        <product-description ng-show="tab.isSet(1)">
+        </product-description>
+        <div product-specs ng-show="tab.isSet(2)">
+
         </div>
         <div ng-show="tab.isSet(3)">
           <ul>
@@ -82,6 +84,6 @@
       <button ng-show="product.canPurchase">Add to Cart</button>
     </div>
   </div>
-
+  </div>
   </body>
 </html>
